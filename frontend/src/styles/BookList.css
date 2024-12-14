@@ -1,0 +1,19 @@
+/* styles/BookList.css */
+.book-list {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.book-item {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  padding: 10px;
+  cursor: pointer;
+  background-color: #f9f9f9;
+}
+
+.book-item:hover {
+  background-color: #f1f1f1;
+}

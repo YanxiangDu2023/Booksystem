@@ -1,0 +1,118 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Georgia', serif;
+  background-color: #2e2e2e;
+  background-image: url('/Users/amandadu/Desktop/coffeeshop/photo/loginin.jpg');
+  background-size: cover;
+  background-position: center;
+  color: #f5f5dc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.login-card {
+  width: 100%;
+  text-align: center;
+}
+
+.login-title {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: #f7d9a7;
+  text-transform: uppercase;
+}
+
+.login-subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  color: #ded4c4;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.login-label {
+  font-size: 1rem;
+  margin-bottom: 5px;
+  display: block;
+  color: #e8e8e8;
+}
+
+.login-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #a08969;
+  border-radius: 5px;
+  background: #3d3d3d;
+  color: #fff;
+  font-size: 1rem;
+  outline: none;
+}
+
+.login-input:focus {
+  border-color: #f7d9a7;
+}
+
+.login-button {
+  width: 100%;
+  padding: 10px 15px;
+  margin-top: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #fff;
+  background-color: #8b5e3c;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+  background-color: #a97a51;
+}
+
+.login-button:disabled {
+  background-color: #4e4e4e;
+  cursor: not-allowed;
+}
+
+.login-error {
+  color: #ff6f61;
+  font-size: 0.9rem;
+  margin: 10px 0;
+}
+
+.login-footer {
+  margin-top: 20px;
+  font-size: 0.9rem;
+  color: #ded4c4;
+}
+
+.signup-link {
+  color: #f7d9a7;
+  cursor: pointer;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.signup-link:hover {
+  color: #fff;
+}
