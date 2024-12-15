@@ -1,19 +1,87 @@
-/* styles/BookList.css */
 .book-list {
-  max-width: 600px;
-  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap; /* 自动换行 */
+  justify-content: space-between; /* 水平间距 */
+  max-width: 1200px; /* 调整宽度 */
+  margin: 50px auto;
   padding: 20px;
 }
 
 .book-item {
+  flex: 1 1 calc(20% - 10px); /* 每行显示5本书，20%宽度，减去间距 */
+  margin: 10px; /* 项目间距 */
   border: 1px solid #ddd;
   border-radius: 8px;
-  margin-bottom: 10px;
-  padding: 10px;
-  cursor: pointer;
-  background-color: #f9f9f9;
+  padding: 15px;
+  background-color: rgba(255, 255, 255, 0.8); /* 半透明白色背景 */
+  color: #333;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
+  text-align: center; /* 内容居中 */
 }
 
 .book-item:hover {
-  background-color: #f1f1f1;
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+h3 {
+  font-size: 18px; /* 调整字体大小 */
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 14px;
+  margin: 5px 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Georgia', serif;
+  background-color: #2e2e2e;
+  background-image: url('/Users/amandadu/Desktop/coffeeshop/photo/loginin.jpg');
+  background-size: cover;
+  background-position: center;
+  color: #f5f5dc;
+  min-height: 100vh;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: -1;
+}
+
+h1 {
+  position: sticky; /* 或 fixed */
+  top: 0;
+  z-index: 10; /* 确保标题在其他元素之上 */
+  background-color: rgba(46, 46, 46, 0.8); /* 背景加点透明黑，突出标题 */
+  padding: 10px;
+  text-align: center;
+  font-size: 2rem;
+  color: #fff;
+}
+
+.search-bar {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px;
+  margin: 20px auto;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  display: block;
+}
+
+.search-bar:focus {
+  outline: none;
+  border-color: #555;
 }

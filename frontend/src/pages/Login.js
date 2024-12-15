@@ -27,16 +27,28 @@ const Login = () => {
 
     setError(null);
     setIsLoading(true);
+
     try {
+      // 调用登录 API
       const data = await login(email, password);
-      localStorage.setItem('token', data.token);
+
+      // 保存登录令牌和用户信息到 localStorage
+      localStorage.setItem('token', data.token); // 保存 token
+      localStorage.setItem('currentUser', JSON.stringify({
+        id: data.user.id,          // 用户ID
+        username: data.user.username, // 用户名
+      }));
+
+      // 跳转到书籍列表页面
       navigate('/books');
     } catch (err) {
+      // 登录失败时设置错误提示
       setError('Login failed. Please check your email and password.');
     } finally {
       setIsLoading(false);
     }
   };
+
 
   return (
     <div className="login-container">

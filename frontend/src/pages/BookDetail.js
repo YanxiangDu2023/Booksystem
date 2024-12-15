@@ -9,6 +9,8 @@ const BookDetail = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
 
+
+
   useEffect(() => {
     const loadBookDetail = async () => {
       setLoading(true);
@@ -25,15 +27,33 @@ const BookDetail = () => {
     loadBookDetail();
   }, [id]);
 
+  const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
   const handleBorrow = async () => {
+    const currentUser = JSON.parse(localStorage.getItem('currentUser')); // 从 localStorage 获取当前用户信息
+    if (!currentUser) {
+      alert('User not logged in. Please log in to borrow books.');
+      return;
+    }
+
+    // 构造完整的 payload
+    const payload = {
+      // borrower: currentUser.username,    // 当前用户的用户名
+      borrowerId: Number(currentUser.id) // 当前用户的 ID，确保为数字
+    };
+
+    console.log('Borrow payload:', payload); // 输出 payload 检查内容是否完整
+
     try {
-      await borrowBook(Number(id), { borrower: 'Current User' });
+      const response = await borrowBook(book.id, payload); // 调用服务发送借阅请求
+      console.log('Borrow response:', response); // 打印响应
       alert('Book borrowed successfully!');
-      navigate('/books');
     } catch (error) {
-      alert('Failed to borrow the book, please try again later.');
+      console.error('Borrow error:', error.response?.data || error.message); // 打印错误信息
+      alert('Failed to borrow the book. Please try again later.');
     }
   };
+
 
   const handleReturn = async () => {
     try {
@@ -57,11 +77,13 @@ const BookDetail = () => {
           <p>Genre: {book.genre}</p>
           <p>Published Year: {book.publishedYear}</p>
           <p>{book.isBorrowed ? 'Currently borrowed' : 'Available for borrowing'}</p>
-          {book.isBorrowed ? (
+
+          {/* 根据借阅状态和当前用户判断按钮显示 */}
+          {book.isBorrowed && book.borrower === currentUser ? (
             <button onClick={handleReturn}>Return Book</button>
-          ) : (
+          ) : !book.isBorrowed ? (
             <button onClick={handleBorrow}>Borrow Book</button>
-          )}
+          ) : null}
         </>
       ) : (
         <p>No book details found</p>
