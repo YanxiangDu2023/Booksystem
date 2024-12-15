@@ -23,6 +23,12 @@ export class BorrowRecord extends Entity {
   })
   borrower?: string | null; // 允许字符串或 null
 
+  @property({
+    type: 'number',
+    required: true,
+  })
+  borrowerId: number | null; // 新增借阅者 ID
+
 
   @property({
     type: 'date', // 注意这里使用 'date' 而不是 'string'

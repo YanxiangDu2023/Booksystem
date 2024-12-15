@@ -44,23 +44,30 @@ export class Book extends Entity {
 
   @property({
     type: 'string',
-    nullable: true,
+    nullable: false,
   })
   borrower?: string | null;
+
+  @property({
+    type: 'number',
+    required: false,
+  })
+  borrowerId?: number | null; // 新增借阅者 ID
 
   ////////////////
 
   @property({
     type: 'date',
-    nullable: true,
+    nullable: false,
   })
   borrowDate?: Date | null;
 
   @property({
     type: 'date',
-    nullable: true,
+    nullable: false,
   })
   returnDate?: Date | null;
+
 
 //////////////////
 
