@@ -1,0 +1,89 @@
+/* 全局样式 */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Georgia', serif;
+  background-color: #2e2e2e;
+  background-image: url('/Users/amandadu/Desktop/coffeeshop/photo/loginin.jpg');
+  background-size: cover;
+  background-position: center;
+  color: #f5f5dc;
+}
+
+/* 容器样式 */
+.my-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* 标题样式 */
+.my-center h1 {
+  font-size: 2.5rem;
+  color: #f7d9a7;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+/* 返回按钮 */
+.back-button {
+  display: inline-block;
+  margin-bottom: 20px;
+  padding: 10px 15px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #fff;
+  background-color: #8b5e3c;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: #a97a51;
+}
+
+/* 网格布局 */
+.borrow-records {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* 响应式网格 */
+  gap: 20px;
+  width: 100%;
+  max-width: 1200px;
+}
+
+/* 卡片样式 */
+.record-item {
+  background: rgba(0, 0, 0, 0.7); /* 半透明背景 */
+  border: 1px solid #a08969;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  color: #e8e8e8;
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.record-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.8);
+}
+
+/* 卡片标题 */
+.record-item h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #f7d9a7;
+}
+
+/* 卡片内容文字 */
+.record-item p {
+  margin: 5px 0;
+  font-size: 1rem;
+  color: #ded4c4;
+  line-height: 1.5;
+}

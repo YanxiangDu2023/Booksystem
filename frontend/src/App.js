@@ -4,6 +4,7 @@ import BookDetail from './pages/BookDetail';
 import BookList from './pages/BookList';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import MyCenter from './pages/MyCenter';
 
 
 const App =() =>{
@@ -15,6 +16,7 @@ const App =() =>{
         <Route path="/register" element={<Register />} />
         <Route path="/books" element={<BookList />} />
         <Route path="/books/:id" element={<BookDetail />} />
+        <Route path="/my-center" element={<MyCenter />} /> {/* 新增路由 */}
 
       </Routes>
     </Router>

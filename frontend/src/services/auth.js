@@ -23,3 +23,8 @@ export const register = async (username, email, password, role) => {
   }
 };
 
+// 获取用户借阅记录
+export const getUserBorrowRecords = async (id) => {
+  const response = await axios.get(`${API_URL}/users/${id}/borrow-records`);
+  return response.data;
+};
