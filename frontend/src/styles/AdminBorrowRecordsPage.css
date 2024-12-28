@@ -1,0 +1,34 @@
+/* 表格字体颜色 */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 16px;
+  text-align: center;
+  color: #ffffff; /* 设置表格字体为白色 */
+}
+
+thead {
+  background-color: #45484b;
+  color: white;
+}
+
+th, td {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  color: #f1f1f1; /* 表格单元格字体颜色 */
+}
+
+/* 奇偶行背景颜色和字体颜色 */
+tr:nth-child(even) {
+  background-color: #6b6b6b;
+}
+
+tr:nth-child(odd) {
+  background-color: #3a3a3a;
+}
+
+tr:hover {
+  background-color: #555;
+  color: #fff; /* 鼠标悬停时字体变为白色 */
+}

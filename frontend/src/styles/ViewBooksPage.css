@@ -1,0 +1,110 @@
+/* 列表容器样式 */
+.books-container {
+  display: flex;
+  flex-wrap: wrap; /* 自动换行 */
+  gap: 20px; /* 卡片间距 */
+  justify-content: center; /* 居中对齐 */
+  margin: 20px;
+  padding: 10px;
+}
+
+/* 单个卡片样式 */
+.book-card {
+  background-color:  #d8cebd;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 300px; /* 卡片宽度 */
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* 标题样式 */
+.book-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: black;
+
+}
+
+/* 作者样式 */
+.book-author {
+  color: black;
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+}
+
+/* 按钮样式 */
+.view-details-button {
+  background-color: white;
+  color: #755011;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.view-details-button:hover {
+  background-color: #ba8c3c;
+}
+
+/* styles.css */
+.delete-button {
+  margin-top: 20px;
+  padding: 10px 15px;
+  background-color: #eb9a0c; /* 红色背景 */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.delete-button:hover {
+  background-color: #d99216; /* 悬停时更深的红色 */
+}
+
+
+/* 通用按钮样式 */
+.button {
+  padding: 10px 15px;
+  background-color: #dbba80;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 5px; /* 增加按钮间的间距 */
+}
+
+.button:hover {
+  background-color: #ba8c3c;
+}
+
+.button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+/* 返回按钮样式 */
+.return-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #9d793c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.return-button:hover {
+  background-color: #c78c25;
+}

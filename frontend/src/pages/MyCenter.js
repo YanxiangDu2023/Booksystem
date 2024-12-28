@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { getUserBorrowRecords } from '../services/auth'; // 导入获取借阅记录的服务
-import '../styles/MyCenter.css'; // 引入样式文件
+// import {getBooks} from '../services/books';
 import { useNavigate } from 'react-router-dom';
+import { returnBook } from '../services/book'; // 导入获取借阅记录的服务
+import '../styles/MyCenter.css'; // 引入样式文件
 
 const MyCenter = () => {
   const [borrowRecords, setBorrowRecords] = useState([]); // 用户的借阅记录
@@ -11,6 +13,26 @@ const MyCenter = () => {
 
   // 获取当前用户信息
   const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
+  // const BookList = () => {
+  //   const [books, setBooks] = useState([]);
+  //   const API_URL = "http://127.0.0.1:3030";
+
+  //   useEffect(() => {
+  //     const fetchBooks = async () => {
+  //       try {
+  //         const response = await axios.get(`${API_URL}/books`);
+  //         console.log("Fetched Books:", response.data);
+  //         setBooks(response.data);
+  //       } catch (error) {
+  //         console.error("Failed to fetch books:", error);
+  //       }
+  //     };
+  //     fetchBooks();
+  //   }, []);
+
+
+
 
   useEffect(() => {
     const loadBorrowRecords = async () => {
@@ -22,8 +44,10 @@ const MyCenter = () => {
 
       try {
         const data = await getUserBorrowRecords(currentUser.id);
+        console.log('Borrow Records:', data); // 打印借阅记录
         setBorrowRecords(data);
       } catch (error) {
+        console.error('Error loading borrow records:', error);
         setErrorMessage('Failed to load borrow records. Please try again later.');
       } finally {
         setLoading(false);
@@ -33,9 +57,31 @@ const MyCenter = () => {
     loadBorrowRecords();
   }, [currentUser]);
 
+
+
+
   const handleBackToList = () => {
     navigate('/books'); // 返回到书籍列表页面
   };
+
+
+  const handleReturn = async (id) => {
+    try {
+      await returnBook(id); // 调用后端服务更新 returnDate
+      alert('Book returned successfully!');
+
+      // 刷新借阅记录
+      const updatedRecords = await getUserBorrowRecords(currentUser.id);
+      setBorrowRecords(updatedRecords);
+    } catch (error) {
+      alert('Failed to return the book. Please try again later.');
+      console.error(error);
+    }
+  };
+
+
+
+
 
   return (
     <div className="my-center">
@@ -64,6 +110,20 @@ const MyCenter = () => {
                   ? new Date(record.returnDate).toLocaleDateString()
                   : 'Not Returned'}
               </p>
+              {!record.returnDate && (
+
+               <button
+                className="return-button"
+                onClick={() => {
+                  console.log('Returning book with ID:', record.bookId); // 检查 bookId 是否存在
+                  handleReturn(record.bookId);
+                }}
+              >
+                Return
+              </button>
+
+              )}
+
             </li>
           ))}
         </ul>

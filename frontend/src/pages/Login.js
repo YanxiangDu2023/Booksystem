@@ -37,16 +37,23 @@ const Login = () => {
       localStorage.setItem('currentUser', JSON.stringify({
         id: data.user.id,          // 用户ID
         username: data.user.username, // 用户名
+        role: data.user.role,      // 用户角色
       }));
+
+      if (data.user.role === "admin"){
+        navigate('/admin');
+      }else{
 
       // 跳转到书籍列表页面
       navigate('/books');
+      }
     } catch (err) {
       // 登录失败时设置错误提示
       setError('Login failed. Please check your email and password.');
     } finally {
       setIsLoading(false);
     }
+
   };
 
 
