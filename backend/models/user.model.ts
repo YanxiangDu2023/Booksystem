@@ -35,12 +35,15 @@ export class User extends Entity {
 
 
 ///////////////////////////////
-  @property({
-    type: 'string',
-    required: true,
-    default: 'user', // 默认角色是普通用户
-  })
-  role: string;
+@property({
+  type: 'string',
+  required: true,
+  default: 'user', // 默认角色是普通用户
+  jsonSchema: {
+    enum: ['user', 'admin'], // 限定角色只能是 'user' 或 'admin'
+  },
+})
+role: 'user' | 'admin'; // 类型约束为枚举
 
 /////////////////////////////////
 

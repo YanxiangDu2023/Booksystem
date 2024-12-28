@@ -105,13 +105,55 @@ export class UserController {
       // 返回成功消息和用户部分信息
       return {
         message: 'Login successful',
-        user: {id: user.id, email: user.email},
+        user: {id: user.id, email: user.email, role: user.role},
       };
     }
 
 
-  // 获取用户列表
-  @get('/users')
+//   @post('/login')
+// async login(
+//   @requestBody() credentials: {email: string; password: string},
+// ): Promise<object> {
+//   const user = await this.userRepository.findOne({
+//     where: {email: credentials.email},
+//   });
+
+//   if (!user) {
+//     throw new HttpErrors.Unauthorized('Invalid email or password');
+//   }
+
+//   // 验证密码（假设密码已哈希）
+//   const isPasswordValid = await this.passwordHasher.compare(
+//     credentials.password,
+//     user.password,
+//   );
+
+//   if (!isPasswordValid) {
+//     throw new HttpErrors.Unauthorized('Invalid email or password');
+//   }
+
+//   // 生成 JWT Token
+//   const token = this.jwtService.generateToken({
+//     id: user.id,
+//     email: user.email,
+//     role: user.role, // 包括角色信息
+//   });
+
+//   return {
+//     message: 'Login successful',
+//     user: {
+//       id: user.id,
+//       email: user.email,
+//       role: user.role, // 添加角色信息
+//     },
+//     token, // 返回 JWT Token
+//   };
+// }
+
+
+
+  // 管理员登陆页面
+  @get('/admin')
   @response(200, {
     description: 'Array of User model instances',
     content: {
@@ -126,6 +168,32 @@ export class UserController {
   async find(@param.filter(User) filter?: Filter<User>): Promise<User[]> {
     return this.userRepository.find(filter);
   }
+
+
+
+// @get('/admin')
+// @response(200, {
+//   description: 'Admin panel data',
+//   content: {'application/json': {schema: {type: 'object'}}},
+// })
+// async getAdminPanel(): Promise<object> {
+//   const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+//   if (!currentUser || currentUser.role !== 'admin') {
+//     throw new HttpErrors.Forbidden('Access denied. Admins only.');
+//   }
+
+//   // 返回管理员相关数据
+//   return {
+//     message: 'Welcome to the admin panel!',
+//     booksCount: await this.bookRepository.count(),
+//     // usersCount: await this.UserRepository.count(),
+//   };
+// }
+
+
+
+
+
 
   // 删除用户（移除权限验证）
   @del('/users/{id}')

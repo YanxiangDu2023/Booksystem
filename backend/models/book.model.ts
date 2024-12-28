@@ -62,9 +62,11 @@ export class Book extends Entity {
   })
   borrowDate?: Date | null;
 
+
   @property({
     type: 'date',
-    nullable: false,
+    nullable: true,
+    default: null,   // 默认值为 null
   })
   returnDate?: Date | null;
 

@@ -38,9 +38,38 @@ export class BorrowRecord extends Entity {
 
 
   @property({
-    type: 'Date',
+    type: 'date',
+    nullable: true,
+    default: null,   // 默认值为 null
   })
-  returnDate?: Date;
+  returnDate?: Date | null;
+
+
+  // 新增字段
+  @property({
+    type: 'string',
+    required: true,
+  })
+  title: string;
+
+  @property({
+    type: 'string',
+    required: true,
+  })
+  author: string;
+
+  @property({
+    type: 'number',
+    required: true,
+  })
+  publishedYear: number;
+
+  @property({
+    type: 'string',
+    required: true,
+  })
+  genre: string;
+
 
   // Define well-known properties here
 
